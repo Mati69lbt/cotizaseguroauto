@@ -1,14 +1,20 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { MARCAS, PLANES, YEARS } from "../constans";
-import CotizadorContext from "../context/CotizadorProvider";
+import useCotizador from "../hooks/useCotizador";
 
 const Formulario = () => {
-  const { modal, setModal } = useContext(CotizadorContext);
-  console.log(modal);
+  const { datos, handleChangeDatos } = useCotizador();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (Object.values(datos).includes("")) {
+      console.error("Error, Todos los campos son Obligatorios");
+    }
+  };
+
   return (
     <>
-      <button onClick={() => setModal(true)}>Cambiar Modal de Context</button>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
             Marca
@@ -16,6 +22,8 @@ const Formulario = () => {
           <select
             name="marca"
             className="w-full p-3 bg-white border border-gray-200"
+            onChange={(e) => handleChangeDatos(e)}
+            value={datos.marca}
           >
             <option value="">-- Selecciona Marca</option>
             {MARCAS.map((marca) => (
@@ -30,8 +38,10 @@ const Formulario = () => {
             AÑO
           </label>
           <select
-            name="marca"
+            name="year"
             className="w-full p-3 bg-white border border-gray-200"
+            onChange={(e) => handleChangeDatos(e)}
+            value={datos.year}
           >
             <option value="">-- Selecciona Marca</option>
             {YEARS.map((year) => (
@@ -49,7 +59,12 @@ const Formulario = () => {
             {PLANES.map((plan) => (
               <Fragment key={plan.id}>
                 <label>{plan.nombre}</label>
-                <input type="radio" name="plan" value={plan.id} />
+                <input
+                  type="radio"
+                  name="plan"
+                  value={plan.id}
+                  onChange={(e) => handleChangeDatos(e)}
+                />
               </Fragment>
             ))}
           </div>
