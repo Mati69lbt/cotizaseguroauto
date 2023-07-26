@@ -23,7 +23,7 @@ const Formulario = () => {
       <form onSubmit={handleSubmit}>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
-            Marca
+            Fabricado en:
           </label>
           <select
             name="marca"
@@ -31,7 +31,7 @@ const Formulario = () => {
             onChange={(e) => handleChangeDatos(e)}
             value={datos.marca}
           >
-            <option value="">-- Selecciona Marca</option>
+            <option value="">-- Selecciona Origen</option>
             {MARCAS.map((marca) => (
               <option key={marca.id} value={marca.id}>
                 {marca.nombre}
@@ -41,7 +41,7 @@ const Formulario = () => {
         </div>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
-            AÑO
+            MODELO
           </label>
           <select
             name="year"
@@ -49,7 +49,7 @@ const Formulario = () => {
             onChange={(e) => handleChangeDatos(e)}
             value={datos.year}
           >
-            <option value="">-- Selecciona Marca</option>
+            <option value="">-- Selecciona Año</option>
             {YEARS.map((year) => (
               <option key={year} value={year}>
                 {year}

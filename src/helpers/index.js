@@ -15,6 +15,18 @@ export function calcularMarca(marca) {
     case "3":
       incremento = 1.05;
       break;
+    case "4":
+      incremento = 1.25;
+      break;
+    case "5":
+      incremento = 1.50;
+      break;
+    case "6":
+      incremento = 1.75;
+      break;
+    case "7":
+      incremento = 1.12;
+      break;
 
     default:
       break;
