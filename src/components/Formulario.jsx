@@ -4,7 +4,8 @@ import useCotizador from "../hooks/useCotizador";
 import Error from "./Error";
 
 const Formulario = () => {
-  const { datos, handleChangeDatos, error, setError } = useCotizador();
+  const { datos, handleChangeDatos, error, setError, cotizarSeguro } =
+    useCotizador();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,14 +13,13 @@ const Formulario = () => {
       setError("Error, Todos los campos son Obligatorios");
       return;
     }
+    setError("");
+    cotizarSeguro();
   };
 
   return (
     <>
-    {
-      error && <Error/>
-      
-    }
+      {error && <Error />}
       <form onSubmit={handleSubmit}>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
