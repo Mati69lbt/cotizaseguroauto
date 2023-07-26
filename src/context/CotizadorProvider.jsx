@@ -9,6 +9,9 @@ const CotizadorProvider = ({ children }) => {
     plan: "",
   });
 
+  //hace un state de error que inicie vacio
+  const [error, setError] = useState("");
+
   const handleChangeDatos = (e) => {
     setDatos({
       ...datos,
@@ -17,7 +20,7 @@ const CotizadorProvider = ({ children }) => {
   };
 
   return (
-    <CotizadorContext.Provider value={{ datos, handleChangeDatos }}>
+    <CotizadorContext.Provider value={{ datos, handleChangeDatos, error, setError }}>
       {children}
     </CotizadorContext.Provider>
   );
